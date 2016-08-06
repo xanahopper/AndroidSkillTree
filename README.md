@@ -10,8 +10,11 @@ Relative blog: [Android Skill Tree]
 ## Current progress
 
 + Activity
+
 > + Life cycle
+
 + Service
+
 > + Start/Stop a service
 > + Bind/Unbind a service
 > + IntentService
