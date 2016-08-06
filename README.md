@@ -3,9 +3,9 @@ AndroidSkillTree
 
 __A practice project for Android basic knowledge.__
 
-Relative blog: [Android Skill Tree]
+Relative blog: [Android Skill Tree][skill]
 
-[Android Skill Tree]: (http://blog.xanahopper.com/Android/2016/android-review-learning-plan/)
+[skill]: http://blog.xanahopper.com/Android/2016/android-review-learning-plan/
 
 ## Current progress
 
