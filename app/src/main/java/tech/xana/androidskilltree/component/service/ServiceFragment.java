@@ -19,6 +19,8 @@ import tech.xana.androidskilltree.R;
 
 /**
  * Created by Xana Hopper on 2016-08-05.
+ *
+ * Service Fragment for ServiceActivity.
  */
 public class ServiceFragment extends Fragment implements View.OnClickListener {
     private Button mStartServiceButton;
@@ -29,6 +31,9 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
     private Button mPlayButton;
     private Button mStopButton;
     private Button mStartIntentService;
+
+    private Button mCallBoundService;
+    private BoundService mBoundService;
 
     private Intent demoService;
     private DemoService.IDemoBinder mDemoBinder;
@@ -47,6 +52,7 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
         mStopButton = (Button) view.findViewById(R.id.service_stop);
 
         mStartIntentService = (Button) view.findViewById(R.id.start_intent_service);
+        mCallBoundService = (Button) view.findViewById(R.id.call_bound_service);
 
         return view;
     }
@@ -66,6 +72,8 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
 
         mStartIntentService.setOnClickListener(this);
 
+        mCallBoundService.setOnClickListener(this);
+
         demoService = new Intent(getContext(), DemoService.class);
     }
 
@@ -73,10 +81,14 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
     public void onDestroy() {
         if (mDemoBinder != null)
             getContext().unbindService(mConnection);
+        if (mBoundService != null) {
+            getContext().unbindService(mBoundConnection);
+        }
         super.onDestroy();
     }
 
     private DemoConnection mConnection = new DemoConnection();
+    private BoundConnection mBoundConnection = new BoundConnection();
 
     public static int JobNumber = 0;
 
@@ -111,6 +123,29 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
                 job.putExtra(JobService.JOB_NUMBER, JobNumber++);
                 getContext().startService(job);
                 break;
+            case R.id.call_bound_service:
+                if (mBoundService == null) {
+                    Intent bound = new Intent(getContext(), BoundService.class);
+                    getContext().bindService(bound, mBoundConnection, Context.BIND_AUTO_CREATE);
+                } else {
+                    mBoundService.getNumber();
+                }
+                break;
+        }
+    }
+
+    private class BoundConnection implements ServiceConnection {
+
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            BoundService.LocalBinder binder = (BoundService.LocalBinder) iBinder;
+            mBoundService = binder.getService();
+            mBoundService.getNumber();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+
         }
     }
 
