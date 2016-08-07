@@ -18,6 +18,11 @@
         </activity>
 
         <activity
+            android:name=".component.ComponentActivity"
+            android:label="基础组件"
+            android:theme="@style/AppTheme"/>
+
+        <activity
             android:name=".component.activity.LifeCycleActivity"
             android:label="Activity生命周期"
             android:theme="@style/AppTheme"/>

@@ -1,4 +1,4 @@
-package tech.xana.androidskilltree.main;
+package tech.xana.androidskilltree.component;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,9 +17,13 @@ import tech.xana.androidskilltree.R;
 import tech.xana.androidskilltree.common.data.DemoAdapter;
 import tech.xana.androidskilltree.common.data.DemoInfo;
 import tech.xana.androidskilltree.common.data.DemoItem;
-import tech.xana.androidskilltree.component.ComponentActivity;
+import tech.xana.androidskilltree.component.activity.LifeCycleActivity;
+import tech.xana.androidskilltree.component.service.ServiceActivity;
 
-public class MainFragment extends Fragment {
+/**
+ * Created by Xana Hopper on 2016-08-07.
+ */
+public class ComponentFragment extends Fragment {
     private RecyclerView mRecyclerView;
 
     @Nullable
@@ -35,12 +39,12 @@ public class MainFragment extends Fragment {
     private List<DemoItem> mItems;
     private DemoAdapter mDemoAdapter;
 
-    private static final int[] Icons = {R.drawable.ic_folder_white_18dp};
-    private static final String[] Names = {"四大基本组件"};
-    private static final String[] Descriptipons = {"Activity, Service, BroadcastReceiver, ContentProvider"};
-    private static final int[] Colors = {R.color.colorAccent};
-    private static final Class[] ActivityClass = {ComponentActivity.class};
-    private static final DemoInfo[] Infos = {new DemoInfo()};
+    private static final int[] Icons = {-1, -1};
+    private static final String[] Names = {"Activity生命周期", "Service生命周期"};
+    private static final String[] Descriptipons = {"控制台输出", "控制台&Toast输出"};
+    private static final int[] Colors = {android.R.color.darker_gray, R.color.textSecondary};
+    private static final Class[] ActivityClass = {LifeCycleActivity.class, ServiceActivity.class};
+    private static final DemoInfo[] Infos = {null, null};
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -48,7 +52,7 @@ public class MainFragment extends Fragment {
 
         mItems = new ArrayList<>();
         for (int i = 0; i < Names.length; ++i) {
-            Class<? extends AppCompatActivity> c =  (Class<? extends AppCompatActivity>)ActivityClass[i];
+            Class<? extends AppCompatActivity> c = (Class<? extends AppCompatActivity>) ActivityClass[i];
             DemoItem item = new DemoItem(Icons[i], Names[i], Descriptipons[i], Colors[i], c);
             if (Infos[i] != null) item.setInfo(Infos[i]);
             mItems.add(item);

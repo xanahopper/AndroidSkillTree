@@ -10,6 +10,7 @@ public class DemoItem {
     private String mName;
     private String mDescription;
     private DemoInfo mInfo;
+    private int mColorId;
     private Class<? extends AppCompatActivity> mActivityClass;
 
     public int getIconId() {
@@ -44,10 +45,11 @@ public class DemoItem {
         this.mActivityClass = mActivityClass;
     }
 
-    public DemoItem(int mIconId, String mName, String mDescription, Class<? extends AppCompatActivity> mActivityClass) {
+    public DemoItem(int mIconId, String mName, String mDescription, int colorId, Class<? extends AppCompatActivity> mActivityClass) {
         this.mIconId = mIconId;
         this.mName = mName;
         this.mDescription = mDescription;
+        mColorId = colorId;
         this.mActivityClass = mActivityClass;
         this.mInfo = null;
     }
@@ -58,5 +60,13 @@ public class DemoItem {
 
     public void setInfo(DemoInfo info) {
         mInfo = info;
+    }
+
+    public int getColorId() {
+        return mColorId;
+    }
+
+    public void setColorId(int colorId) {
+        mColorId = colorId;
     }
 }

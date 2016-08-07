@@ -54,5 +54,6 @@ public class LifeCycleActivity extends CommonActivity {
         super.onCreate(savedInstanceState);
 
         Log.i(TAG, "onCreate");
+        setHasParent(true);
     }
 }

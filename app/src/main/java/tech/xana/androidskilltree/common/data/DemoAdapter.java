@@ -27,15 +27,16 @@ public class DemoAdapter extends CommonAdapter<DemoItem> {
 
     @Override
     protected void onBindDataToView(CommonViewHolder viewHolder, DemoItem item) {
+        int colorId = item.getColorId() > 0 ? item.getColorId() : R.color.textSecondary;
         if (item.getIconId() == -1) {
-            viewHolder.setPlachholder(R.id.item_icon, R.drawable.ic_unspecified_icon, R.color.textSecondary);
+            viewHolder.setPlachholder(R.id.item_icon, R.drawable.ic_unspecified_icon, colorId);
         } else {
-            viewHolder.setPlachholder(R.id.item_icon, item.getIconId(), R.color.textSecondary);
+            viewHolder.setPlachholder(R.id.item_icon, item.getIconId(), colorId);
         }
         viewHolder.setText(R.id.primary_text, item.getName());
         viewHolder.setText(R.id.secondary_text, item.getDescription());
         if (item.getInfo() == null) {
-            viewHolder.setVisible(R.id.item_info, View.GONE);
+            viewHolder.setVisible(R.id.item_info, View.INVISIBLE);
         } else {
             viewHolder.setVisible(R.id.item_info, View.VISIBLE);
             viewHolder.setImage(R.id.item_info, R.drawable.ic_info_grey_400_18dp);
