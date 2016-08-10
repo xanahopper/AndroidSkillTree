@@ -68,4 +68,11 @@
         android:layout_height="wrap_content"
         android:text="调用绑定方法"/>
 
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/call_messenger_service"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="调用Messenager_Service"/>
+
 </LinearLayout>
