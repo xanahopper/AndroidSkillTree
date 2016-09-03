@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * Created by Xana Hopper on 2016-08-05.
+ *
  */
 public abstract class CommonAdapter<T> extends RecyclerView.Adapter<CommonAdapter.CommonViewHolder> {
 
@@ -44,16 +45,8 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<CommonAdapte
         onBindDataToView(holder, mItems.get(position));
     }
 
-    /**
-     * @param viewHolder
-     * @param item
-     */
     protected abstract void onBindDataToView(CommonViewHolder viewHolder, T item);
 
-    /**
-     * @param viewType
-     * @return
-     */
     public abstract int getItemLayoutID(int viewType);
 
     @Override

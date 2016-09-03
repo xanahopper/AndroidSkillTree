@@ -18,6 +18,7 @@ import tech.xana.androidskilltree.common.data.DemoAdapter;
 import tech.xana.androidskilltree.common.data.DemoInfo;
 import tech.xana.androidskilltree.common.data.DemoItem;
 import tech.xana.androidskilltree.component.activity.LifeCycleActivity;
+import tech.xana.androidskilltree.component.broadcastreceiver.BroadcastReceiverActivity;
 import tech.xana.androidskilltree.component.service.ServiceActivity;
 
 /**
@@ -39,12 +40,12 @@ public class ComponentFragment extends Fragment {
     private List<DemoItem> mItems;
     private DemoAdapter mDemoAdapter;
 
-    private static final int[] Icons = {-1, -1};
-    private static final String[] Names = {"Activity生命周期", "Service生命周期"};
-    private static final String[] Descriptipons = {"控制台输出", "控制台&Toast输出"};
-    private static final int[] Colors = {android.R.color.darker_gray, R.color.textSecondary};
-    private static final Class[] ActivityClass = {LifeCycleActivity.class, ServiceActivity.class};
-    private static final DemoInfo[] Infos = {null, null};
+    private static final int[] Icons = {-1, -1, R.drawable.ic_rss_feed_white_18dp};
+    private static final String[] Names = {"Activity生命周期", "Service生命周期", "BroadcastReceiver"};
+    private static final String[] Descriptipons = {"控制台输出", "控制台&Toast输出", "广播的应用"};
+    private static final int[] Colors = {android.R.color.darker_gray, R.color.textSecondary, R.color.colorAccent};
+    private static final Class[] ActivityClass = {LifeCycleActivity.class, ServiceActivity.class, BroadcastReceiverActivity.class};
+    private static final DemoInfo[] Infos = {null, null, null};
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
